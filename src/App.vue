@@ -1,13 +1,32 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+  <div>
+    <input type="text" v-model.number="myVal">
+    <com-a :my-value="myVal" @my-event="getMyEvent">
+       <!-- <p>123</p>
+      <span>fish</span> -->
+      <p slot="header">xxxx header</p>
+      <p slot="footer">yyy footer</p>
+    </com-a>
   </div>
 </template>
 
 <script>
+// import Vue from 'vue'
+import ComA from './components/A'
 export default {
-  name: 'app'
+  components: {
+    ComA
+  },
+  data () {
+    return {
+      myVal: ''
+    }
+  },
+  methods: {
+    getMyEvent (hello) {
+      console.log('i got my event' + hello)
+    }
+  }
 }
 </script>
 
